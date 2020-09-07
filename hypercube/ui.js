@@ -38,6 +38,7 @@ function createShapeControls(parent, shape) {
 				menu.appendChild(option);
 			});
 		});
+		updateScrollFrame();
 	});
 	dimensionControl.appendChild(dButton);
 
