@@ -14,8 +14,8 @@ function range(start, stop, step) {
 		return [];
 	}
 
-	var result = [];
-	for (var i = start; step > 0 ? i < stop : i > stop; i += step) {
+	const result = [];
+	for (let i = start; step > 0 ? i < stop : i > stop; i += step) {
 		result.push(i);
 	}
 

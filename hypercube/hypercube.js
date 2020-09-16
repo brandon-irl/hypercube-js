@@ -15,14 +15,11 @@ function hypercube(elementId) {
 	const cvs = create('hypercube', parent, width, height);
 	const ctx = cvs.ctx;
 	if (cvs.canvas.getContext) {
-		var onDimensionChanged = function (ev) {
-			var dimension = ev.detail;
+		const onDimensionChanged = function (ev) {
+			const dimension = ev.detail;
 			if (Number.isInteger(dimension) && dimension > 0) {
-				if (dimension == shape.dimension)
+				if (dimension == shape.dimension || (dimension > 9 && !window.confirm("Dimensions larger than nine are computationally intensive and may impact performance."))) {
 					return;
-				if (dimension > 9) {
-					if (!window.confirm("Dimensions larger than nine are computationally intensive and may impact performance."))
-						return;
 				}
 
 				shape.changeDimension(dimension);
@@ -42,7 +39,7 @@ function hypercube(elementId) {
 		}
 
 		const drawShape = function (shape) {
-			var projectedPoints = project2D(shape.points);
+			const projectedPoints = project2D(shape.points);
 			// Draw Edges
 			ctx.clearRect(-(width / 2), -(height / 2), width, height);
 			ctx.strokeStyle = 'rgb(0,0,0)';
@@ -61,7 +58,7 @@ function hypercube(elementId) {
 		}
 
 		ctx.translate(width / 2, height / 2);
-		var shape = new Shape(3, [[[0, 2], 0.01047, 30]]);
+		const shape = new Shape(3, [[[0, 2], 0.01047, 30]]);
 		draw();
 		document.addEventListener('onDimensionChanged', onDimensionChanged);
 		createShapeControls(document.getElementById(cvs.id), shape);

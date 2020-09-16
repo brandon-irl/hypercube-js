@@ -30,7 +30,7 @@ class Shape {
 		this.edges = [];
 		range(this.points.length - 1).forEach(firstPoint => {
 			range(firstPoint + 1, this.points.length).forEach(secondPoint => {
-				var differences = 0;
+				let differences = 0;
 				range(this.points[firstPoint].length).forEach(component => {
 					if (this.points[firstPoint][component] !== this.points[secondPoint][component]) {
 						differences++;
@@ -47,8 +47,8 @@ class Shape {
 	rotate() {
 		this.rotations.forEach(rotation => {
 			this.points.forEach(point => {
-				var new_axis1 = (point[rotation[0][0]] * Math.cos(rotation[1])) + (point[rotation[0][1]] * Math.sin(rotation[1]));
-				var new_axis2 = (point[rotation[0][0]] * -Math.sin(rotation[1])) + (point[rotation[0][1]] * Math.cos(rotation[1]));
+				const new_axis1 = (point[rotation[0][0]] * Math.cos(rotation[1])) + (point[rotation[0][1]] * Math.sin(rotation[1]));
+				const new_axis2 = (point[rotation[0][0]] * -Math.sin(rotation[1])) + (point[rotation[0][1]] * Math.cos(rotation[1]));
 				point[rotation[0][0]] = new_axis1;
 				point[rotation[0][1]] = new_axis2;
 			});
